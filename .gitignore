@@ -1,0 +1,13 @@
+# скомпилированные файлы
+*.exe
+*.o
+*.out
+*.obj
+
+# папки редактора
+.vscode/
+.idea/
+
+# служебные файлы Windows
+Thumbs.db
+desktop.ini

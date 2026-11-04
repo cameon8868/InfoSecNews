@@ -1,5 +1,8 @@
+/* Ваши базовые настройки */
 :root {
     --header-bg: #161a20;
+    --surface: #1b2028;
+    --border: #2a323d;
 }
 
 .site-header {
@@ -7,6 +10,74 @@
 }
 
 .site-navbar {
-    background-color: #1b2028 !important;  /* = ваш --surface */
-    border-bottom: 1px solid #2a323d;
+    background-color: #1b2028 !important;
+    border-bottom: 1px solid var(--border);
+}
+
+body {
+    background-color: #0f1115; 
+    color: #e6edf3;
+}
+
+.card, .accordion-item {
+    background-color: var(--surface) !important;
+    border-color: var(--border) !important;
+}
+.card-header, .accordion-button {
+    background-color: var(--header-bg) !important;
+    color: #fff !important;
+    border-color: var(--border) !important;
+}
+.accordion-button:not(.collapsed) {
+    background-color: var(--surface) !important;
+    color: #fff !important;
+}
+.accordion-button::after {
+    filter: invert(1); 
+}
+
+.form-control, .form-select, .input-group-text {
+    background-color: #0f1115 !important;
+    border-color: var(--border) !important;
+    color: #fff !important;
+}
+.form-control:focus, .form-select:focus {
+    background-color: #0f1115 !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+.form-check-input {
+    background-color: #0f1115 !important;
+    border-color: var(--border) !important;
+}
+.modal-content {
+    background-color: var(--surface) !important;
+    border-color: var(--border) !important;
+}
+
+.placeholder-image {
+    min-height: 320px;
+    background-color: var(--header-bg) !important;
+}
+
+/* Стили для текста статьи */
+.article-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.15rem; 
+    color: #e6edf3; 
+}
+
+.article-content {
+    max-width: 800px; 
+}
+
+/* Оформление заголовка статьи */
+#article-title {
+    color: #ffffff;
+}
+
+/* Эффект наведения для списка "Читайте также" */
+.list-item-hover:hover {
+    background-color: var(--header-bg) !important;
+    border-color: #4b5563 !important; /* Чуть более светлая рамка */
 }
