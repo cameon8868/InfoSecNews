@@ -1,0 +1,12 @@
+:root {
+    --header-bg: #161a20;
+}
+
+.site-header {
+    background-color: var(--header-bg) !important;
+}
+
+.site-navbar {
+    background-color: #1b2028 !important;  /* = ваш --surface */
+    border-bottom: 1px solid #2a323d;
+}
