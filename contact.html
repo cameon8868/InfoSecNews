@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сообщите об уязвимости — InfoSecNews</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header class="site-header text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-8">
+                    <div class="d-flex align-items-center justify-content-start mb-1">
+                        <img src="image/logo.png" alt="Logo" width="50" height="50" style="margin-right: 8px;">
+                        <h1 class="h3 mb-0">InfoSecNews</h1>
+                    </div>
+                    <p class="mb-0 opacity-75">Новости информационной безопасности</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Наши эксперты</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Сообщить об уязвимости</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Блог</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="mb-5">
+            <h2 class="page-title display-6 mb-2">Сообщите об уязвимости</h2>
+            <p class="text-secondary mb-0">Сообщите об уязвимости, утечке или подкиньте тему для материала.</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Левая колонка: как мы работаем -->
+            <div class="col-12 col-lg-4 reveal">
+                <div class="card hover-lift h-100">
+                    <div class="card-header"><strong>Как мы работаем с отчётами</strong></div>
+                    <div class="card-body">
+                        <div class="contact-info-item">
+                            <div class="ci-icon">⏱️</div>
+                            <div>
+                                <div class="fw-semibold">Ответ за 2 рабочих дня</div>
+                                <small class="text-secondary">Подтвердим получение и уточним детали.</small>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon">🔒</div>
+                            <div>
+                                <div class="fw-semibold">Конфиденциальность</div>
+                                <small class="text-secondary">Данные об уязвимости не публикуются без вашего согласия.</small>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon">🤝</div>
+                            <div>
+                                <div class="fw-semibold">Ответственное раскрытие</div>
+                                <small class="text-secondary">Даём вендору время исправить проблему до публикации.</small>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon">✉️</div>
+                            <div>
+                                <div class="fw-semibold">Почта редакции</div>
+                                <small class="text-secondary">security@infosecnews.example</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая колонка: форма -->
+            <div class="col-12 col-lg-8 reveal">
+                <div class="card h-100">
+                    <div class="card-header"><strong>Отправить уязвимость</strong></div>
+                    <div class="card-body">
+
+                        <div id="form-success" class="alert alert-success d-none" role="alert">
+                            Отчёт принят. Мы ответим на указанный e-mail в течение двух рабочих дней.
+                        </div>
+
+                        <form id="vuln-form" novalidate>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="v-name" class="form-label">Имя или псевдоним *</label>
+                                    <input id="v-name" type="text" class="form-control" required>
+                                    <div class="invalid-feedback">Укажите имя или псевдоним.</div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="v-email" class="form-label">E-mail для ответа *</label>
+                                    <input id="v-email" type="email" class="form-control" required>
+                                    <div class="invalid-feedback">Укажите корректный e-mail.</div>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="v-type" class="form-label">Тип уязвимости *</label>
+                                    <select id="v-type" class="form-select" required>
+                                        <option value="" selected disabled>Выберите тип</option>
+                                        <option>RCE (удалённое выполнение кода)</option>
+                                        <option>SQL-инъекция</option>
+                                        <option>XSS</option>
+                                        <option>Повышение привилегий</option>
+                                        <option>Утечка данных</option>
+                                        <option>Обход аутентификации</option>
+                                        <option>Другое</option>
+                                    </select>
+                                    <div class="invalid-feedback">Выберите тип уязвимости.</div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="v-target" class="form-label">Продукт или адрес *</label>
+                                    <input id="v-target" type="text" class="form-control" placeholder="Название, версия или URL" required>
+                                    <div class="invalid-feedback">Укажите, где найдена уязвимость.</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label d-block">Критичность</label>
+                                    <div class="btn-group severity-group w-100" role="group" aria-label="Критичность">
+                                        <input type="radio" class="btn-check" name="severity" id="sev-low" value="Low" autocomplete="off">
+                                        <label class="btn btn-outline-info" for="sev-low">Низкая</label>
+                                        <input type="radio" class="btn-check" name="severity" id="sev-mid" value="Medium" autocomplete="off" checked>
+                                        <label class="btn btn-outline-warning" for="sev-mid">Средняя</label>
+                                        <input type="radio" class="btn-check" name="severity" id="sev-high" value="High" autocomplete="off">
+                                        <label class="btn btn-outline-danger" for="sev-high">Высокая</label>
+                                        <input type="radio" class="btn-check" name="severity" id="sev-crit" value="Critical" autocomplete="off">
+                                        <label class="btn btn-outline-danger" for="sev-crit">Критическая</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="v-desc" class="form-label">Описание *</label>
+                                    <textarea id="v-desc" class="form-control" placeholder="Что происходит и чем это опасно" required minlength="20"></textarea>
+                                    <div class="invalid-feedback">Опишите проблему (не короче 20 символов).</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="v-steps" class="form-label">Шаги воспроизведения</label>
+                                    <textarea id="v-steps" class="form-control" placeholder="1. Откройте…&#10;2. Отправьте запрос…"></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input id="v-agree" class="form-check-input" type="checkbox" required>
+                                        <label class="form-check-label" for="v-agree">
+                                            Я не использовал уязвимость во вред и согласен на ответственное раскрытие *
+                                        </label>
+                                        <div class="invalid-feedback">Необходимо подтвердить согласие.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 d-flex gap-2 mt-3">
+                                    <button class="btn btn-primary" type="submit">Отправить отчёт</button>
+                                    <button class="btn btn-outline-secondary" type="reset">Очистить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+        <div class="row g-4 justify-content-between">
+
+            <!-- О проекте -->
+            <div class="col-12 col-lg-5">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="image/logo.png" alt="Logo" width="40" height="40" style="margin-right: 8px;">
+                    <span class="h5 mb-0">InfoSecNews</span>
+                </div>
+                <p class="text-secondary small mb-0">
+                    Независимое издание об информационной безопасности: инциденты, уязвимости,
+                    практические гайды и мнения экспертов. Каждый материал проверяет редактор.
+                </p>
+            </div>
+
+            <!-- Навигация -->
+            <div class="col-6 col-lg-3">
+                <h6 class="footer-title">Навигация</h6>
+                <ul class="footer-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Блог</a></li>
+                    <li><a href="team.html">Наши эксперты</a></li>
+                    <li>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Подписка</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Контакты -->
+            <div class="col-6 col-lg-4">
+                <h6 class="footer-title">Контакты</h6>
+                <ul class="footer-links">
+                    <li>+7(988)-443-5338</li>
+                    <li>Пн–Пт, 10:00–18:00 (МСК)</li>
+                    <li><a href="mailto:security@infosecnews.com">security@infosecnews.com</a></li>
+                    <li>Отвечаем в течение одного рабочего дня</li>
+                </ul>
+                <a class="btn btn-outline-primary btn-sm" href="contact.html">Сообщить об уязвимости</a>
+            </div>
+        </div>
+
+        <hr class="footer-divider my-4">
+
+        <div class="row align-items-center g-2 small">
+            <div class="col-12 col-md-6 text-secondary">
+                &copy; 2026 InfoSecNews. Все права защищены.
+            </div>
+            <div class="col-12 col-md-6 text-md-end">
+                <a class="footer-bottom-link" href="privacy.html">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/effects.js"></script>
+    <script>
+        const form = document.getElementById('vuln-form');
+        const ok = document.getElementById('form-success');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            ok.classList.add('d-none');
+
+            // Подсветка ошибок встроенной проверкой браузера
+            form.querySelectorAll('[required]').forEach(el => {
+                el.classList.toggle('is-invalid', !el.checkValidity());
+            });
+            if (!form.checkValidity()) return;
+
+            const data = {
+                name: form['v-name'].value,
+                email: form['v-email'].value,
+                type: form['v-type'].value,
+                target: form['v-target'].value,
+                severity: form.severity.value,
+                description: form['v-desc'].value,
+                steps: form['v-steps'].value
+            };
+
+            // ВАЖНО: пока отправка только имитируется.
+            // Для реальной отправки замени на fetch('/api/report', {method:'POST', ...})
+            // или подключи сервис форм (Formspree, Web3Forms).
+            console.log('Отчёт об уязвимости:', data);
+
+            form.reset();
+            form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+            ok.classList.remove('d-none');
+            ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // Убираем красную рамку, как только поле исправили
+        form.addEventListener('input', (e) => {
+            if (e.target.matches('[required]')) {
+                e.target.classList.toggle('is-invalid', !e.target.checkValidity());
+            }
+        });
+        form.addEventListener('reset', () => {
+            form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+        });
+    </script>
+</body>
+</html>

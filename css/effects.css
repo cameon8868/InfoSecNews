@@ -1,0 +1,228 @@
+/* ===== InfoSecNews: эффекты и новые разделы =====
+   Подключай ПОСЛЕ custom.css:
+   <link rel="stylesheet" href="css/effects.css">
+*/
+
+:root {
+    --accent: #2fa4b6;
+    --accent-glow: rgba(47, 164, 182, .35);
+}
+
+html { scroll-behavior: smooth; }
+
+/* ---------- Шапка: тихий градиент, логотип светится при наведении ---------- */
+.site-header {
+    background-image: linear-gradient(115deg, #161a20 0%, #12303a 50%, #161a20 100%);
+    background-size: 200% 100%;
+    animation: headerShift 14s ease-in-out infinite alternate;
+}
+@keyframes headerShift {
+    from { background-position: 0% 0; }
+    to   { background-position: 100% 0; }
+}
+.site-header img {
+    transition: filter .3s ease, transform .3s ease;
+}
+.site-header img:hover {
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+    transform: scale(1.06);
+}
+/* единственное «входное» движение: шапка появляется при загрузке */
+.site-header .container { animation: headerIn .7s ease both; }
+@keyframes headerIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Меню: подчёркивание выезжает слева ---------- */
+.site-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    backdrop-filter: blur(8px);
+    background-color: rgba(27, 32, 40, .92) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .35);
+}
+
+/* чтобы заголовок при переходе по якорю (#popular) не прятался под меню */
+html { scroll-padding-top: 70px; }
+
+.site-navbar .nav-link {
+    position: relative;
+    transition: color .2s ease;
+}
+.site-navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: .5rem; right: .5rem; bottom: .25rem;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+}
+.site-navbar .nav-link:hover::after,
+.site-navbar .nav-link.active::after { transform: scaleX(1); }
+
+/* ---------- Карточки поднимаются при наведении ---------- */
+.hover-lift,
+.card.hover-lift,
+#popular-articles-container > div > div,
+#catalog-container > div > div {
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.hover-lift:hover,
+#popular-articles-container > div > div:hover,
+#catalog-container > div > div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .45), 0 0 0 1px var(--accent-glow);
+    border-color: var(--accent) !important;
+}
+
+/* ---------- Кнопки ---------- */
+.btn { transition: transform .15s ease, box-shadow .2s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary:hover { box-shadow: 0 6px 18px rgba(13, 110, 253, .4); }
+.btn-outline-primary:hover { box-shadow: 0 6px 18px rgba(13, 110, 253, .25); }
+
+/* ---------- Появление блоков при прокрутке (только то, что отмечено .reveal) ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ---------- Полоса прокрутки сверху ---------- */
+#scroll-progress {
+    position: fixed; top: 0; left: 0;
+    height: 3px; width: 0;
+    background: linear-gradient(90deg, var(--accent), #0d6efd);
+    z-index: 2000;
+    transition: width .1s linear;
+}
+
+/* ---------- Кнопка «Наверх» ---------- */
+#back-to-top {
+    position: fixed; right: 20px; bottom: 20px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    background: var(--surface);
+    color: var(--accent);
+    font-size: 20px; line-height: 1;
+    opacity: 0; pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity .25s ease, transform .25s ease, background .2s ease;
+    z-index: 1500;
+}
+#back-to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+#back-to-top:hover { background: var(--accent); color: #0f1115; }
+
+/* ---------- Страница команды ---------- */
+.page-title {
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+.team-card .avatar-ring {
+    display: inline-block;
+    padding: 4px;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, var(--accent), #0d6efd, var(--accent));
+    transition: transform .6s ease;
+}
+.team-card:hover .avatar-ring { transform: rotate(360deg); }
+.team-card .avatar-ring img {
+    display: block;
+    border: 3px solid var(--surface) !important;
+    transition: transform .6s ease;
+}
+.team-card:hover .avatar-ring img { transform: rotate(-360deg); }
+
+.achievements {
+    list-style: none;
+    padding: 0; margin: 0;
+    text-align: left;
+}
+.achievements li {
+    display: flex; gap: .6rem;
+    padding: .55rem 0;
+    border-top: 1px solid var(--border);
+    font-size: .92rem;
+    color: #c9d6d9;
+}
+.achievements li:first-child { border-top: none; }
+.achievements .ach-icon { flex-shrink: 0; width: 1.4rem; text-align: center; }
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+}
+
+/* ---------- Страница «Связаться с нами» ---------- */
+.contact-info-item {
+    display: flex; gap: .9rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+}
+.contact-info-item:first-child { border-top: none; padding-top: 0; }
+.contact-info-item .ci-icon {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    background: rgba(47, 164, 182, .12);
+    font-size: 1.2rem;
+}
+.severity-group .btn-check:checked + .btn { box-shadow: 0 0 0 2px var(--accent-glow); }
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 .25rem var(--accent-glow) !important;
+}
+textarea.form-control { min-height: 140px; }
+
+/* Спокойный режим для тех, кто отключил анимации в системе */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+}
+
+
+/* ---------- Экраны главной ---------- */
+.screen {
+    min-height: calc(100vh - 56px);   /* 56px = высота меню */
+    display: flex;
+    align-items: center;
+    padding: 2.5rem 0;
+}
+.screen > .container { width: 100%; }
+.screen + .screen { border-top: 1px solid var(--border); }
+
+.topic-tile {
+    display: block;
+    padding: 1.1rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: .5rem;
+    background: var(--surface);
+    color: #e6edf3;
+    text-decoration: none;
+    text-align: center;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.topic-tile:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .4);
+    color: #fff;
+}
+.step-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: inline-grid; place-items: center;
+    background: rgba(47, 164, 182, .15);
+    color: var(--accent);
+    font-weight: 700;
+}

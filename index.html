@@ -1,99 +1,324 @@
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="dark">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная — InfoSecNews</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/custom.css">
-    </head>
-    <body>
-        <header class="site-header text-white py-4">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body id="top">
+    <header class="site-header text-white py-4">
         <div class="container">
             <div class="row align-items-center">
-            <div class="col-12 col-md-8">
-                <h1 class="h3 mb-1">InfoSecNews</h1>
-                <p class="mb-0 opacity-75">Новости информационной безопасности</p>
-            </div>
-            <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
-                <span class="badge bg-light text-primary">КР №2</span>
-            </div>
+                <div class="col-12 col-md-8">
+                    <div class="d-flex align-items-center justify-content-start mb-1">
+                        <img src="image/logo.png" alt="Logo" width="50" height="50" style="margin-right: 8px;">
+                        <h1 class="h3 mb-0">InfoSecNews</h1>
+                    </div>
+                    <p class="mb-0 opacity-75">Новости информационной безопасности</p>
+                </div>
             </div>
         </div>
-        </header>
-        
-        <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">InfoSecNews</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="news.html">Новости</a>
-                    <li class="nav-item">
-                    <a class="nav-link" href="order.html">Заявка</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Дополнительно</a>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="index.html#popular">Популярное</a></li>
-                    </ul>
-                    </li>
-                </ul>
-                </div>
-            </div>
-        </nav>
+    </header>
 
-        <main>
-            <section class="container my-5">
-                <div class="row align-items-center g-4">
-                <div class="col-12 col-lg-6">
-                    <h2 class="display-5 fw-bold">Новости информационной безопасности</h2>
-                    <p class="lead text-muted">
-                    Проект демонстрирует использование Bootstrap-сетки, адаптивных колонок и базовых utility-классов на примере новостного инфобез-портала.
-                    </p>
-                    <a class="btn btn-primary btn-lg" href="news.html">Перейти к новостям</a>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="p-5 bg-dark border rounded text-center">
-                    <p class="mb-0 text-muted">Здесь может быть изображение, баннер или промо-блок с ключевыми угрозами недели.</p>
+    <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Наши эксперты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Сообщить об уязвимости</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Блог</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ЭКРАН 1: первый взгляд -->
+        <section class="screen">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-12 col-lg-7">
+                        <h2 class="display-4 fw-bold mb-3">Новости информационной безопасности</h2>
+                        <p class="lead text-secondary mb-4">
+                            Инциденты, уязвимости и практические гайды. Каждый материал проверяет редактор.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 mb-5">
+                            <a class="btn btn-primary btn-lg" href="news.html">Читать новости</a>
+                            <a class="btn btn-outline-primary btn-lg" href="order.html">Подписаться</a>
+                        </div>
+                        <div class="row text-center text-sm-start g-3">
+                            <div class="col-4">
+                                <div class="stat-number"><span data-count="120">0</span>+</div>
+                                <small class="text-secondary">материалов</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number"><span data-count="45">0</span></div>
+                                <small class="text-secondary">разобрано уязвимостей</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number"><span data-count="4">0</span></div>
+                                <small class="text-secondary">эксперта</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5">
+                        <div class="card hover-lift">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <strong>Угроза недели</strong>
+                                <span class="badge bg-danger">Zero-Day</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="h5">Эксплойт нулевого дня для Windows продаётся за $2,5 млн</h3>
+                                <p class="text-secondary small">
+                                    Уязвимость якобы позволяет повысить привилегии и обойти Secure Boot.
+                                    Подлинность пока не подтверждена.
+                                </p>
+                                <a class="btn btn-primary btn-sm" href="product.html?id=zero-day-windows">Читать</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ЭКРАН 2: материалы и темы -->
+        <section class="screen" id="popular">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0">Свежие материалы</h2>
+                    <a class="btn btn-outline-primary" href="news.html">Все новости</a>
                 </div>
-            </section>
+                <!-- Сюда JS вставляет карточки -->
+                <div class="row g-4 mb-5" id="popular-articles-container"></div>
 
-            <section class="container my-5" id="popular">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="mb-0">Свежие материалы</h2>
-                <a class="btn btn-outline-primary" href="news.html">Все новости</a>
+                <h3 class="h5 mb-3" id="faq">Частые вопросы</h3>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                Как сообщить об уязвимости?
+                            </button>
+                        </h4>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary">
+                                Заполните форму на странице <a href="contact.html">«Сообщить об уязвимости»</a>: опишите проблему и шаги воспроизведения. Мы ответим в течение двух рабочих дней.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                Как часто выходит дайджест?
+                            </button>
+                        </h4>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary">
+                                На базовом тарифе раз в неделю, на премиум-тарифе каждый день. Тариф выбирается в <a href="order.html">форме подписки</a>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                Опубликуете ли вы моё имя, если я сообщу об уязвимости?
+                            </button>
+                        </h4>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary">
+                                Только с вашего согласия. Подробности в <a href="privacy.html">политике конфиденциальности</a>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                Как отписаться от рассылки?
+                            </button>
+                        </h4>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary">
+                                Напишите на <a href="mailto:press@infosecnews.com">security@infosecnews.com</a> с темой «Отписка», и мы удалим вас из списка.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Контейнер, куда JS вставляет карточки -->
-            <div class="row g-4" id="popular-articles-container">
-                <!-- Карточки появятся здесь -->
-            </div>
-            </section>
-        </main>
+        </section>
 
-        <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container">
-            <div class="row align-items-center g-3">
-            <div class="col-12 col-md-6">
-                <p class="mb-0">&copy; 2026 InfoSecNews. Учебный проект.</p>
+        <!-- ЭКРАН 3: команда, принцип работы, подписка -->
+        <section class="screen" id="team">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0">Журналисты и эксперты</h2>
+                    <a class="btn btn-outline-primary" href="team.html">Вся команда</a>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-6 col-md-3">
+                        <a href="team.html" class="text-decoration-none text-reset">
+                            <div class="card hover-lift h-100 text-center">
+                                <div class="card-body">
+                                    <img src="image/AnnaPruchcovscaya.png" alt="Анна Пручевская"
+                                         class="rounded-circle border border-secondary object-fit-cover bg-secondary mb-3"
+                                         width="96" height="96" style="object-position: top;">
+                                    <h3 class="h6 mb-1">Анна Пручевская</h3>
+                                    <small class="text-secondary">Журналист</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <a href="team.html" class="text-decoration-none text-reset">
+                            <div class="card hover-lift h-100 text-center">
+                                <div class="card-body">
+                                    <img src="image/Линус-Торвальдс.png" alt="Линус Торвальдс"
+                                         class="rounded-circle border border-secondary object-fit-cover bg-secondary mb-3"
+                                         width="96" height="96" style="object-position: top;">
+                                    <h3 class="h6 mb-1">Линус Торвальдс</h3>
+                                    <small class="text-secondary">Эксперт по ИБ</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <a href="team.html" class="text-decoration-none text-reset">
+                            <div class="card hover-lift h-100 text-center">
+                                <div class="card-body">
+                                    <img src="image/Yan.png" alt="Ян Кузнецов"
+                                         class="rounded-circle border border-secondary object-fit-cover bg-secondary mb-3"
+                                         width="96" height="96" style="object-position: top;">
+                                    <h3 class="h6 mb-1">Ян Кузнецов</h3>
+                                    <small class="text-secondary">Аналитик угроз</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <a href="team.html" class="text-decoration-none text-reset">
+                            <div class="card hover-lift h-100 text-center">
+                                <div class="card-body">
+                                    <img src="image/Ryslan.png" alt="Руслан Байрамгулов"
+                                         class="rounded-circle border border-secondary object-fit-cover bg-secondary mb-3"
+                                         width="96" height="96" style="object-position: top;">
+                                    <h3 class="h6 mb-1">Руслан Байрамгулов</h3>
+                                    <small class="text-secondary">Редактор</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-12 col-md-4 d-flex gap-3">
+                        <span class="step-num">1</span>
+                        <div>
+                            <div class="fw-semibold">Находим источник</div>
+                            <small class="text-secondary">Первоисточники, отчёты CISA, NIST и вендоров.</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex gap-3">
+                        <span class="step-num">2</span>
+                        <div>
+                            <div class="fw-semibold">Проверяем факты</div>
+                            <small class="text-secondary">Сверяем данные и подтверждаем у экспертов.</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex gap-3">
+                        <span class="step-num">3</span>
+                        <div>
+                            <div class="fw-semibold">Публикуем после редактуры</div>
+                            <small class="text-secondary">Каждый текст читает редактор.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card hover-lift">
+                    <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                        <div>
+                            <h3 class="h5 mb-1">Дайджест угроз раз в неделю</h3>
+                            <p class="text-secondary mb-0">Только важное, без спама.</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a class="btn btn-primary" href="order.html">Подписаться</a>
+                            <a class="btn btn-outline-secondary" href="contact.html">Сообщить об уязвимости</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-md-6 text-md-end">
-                <a class="text-white text-decoration-none me-3" href="news.html">Новости</a>
-                <a class="text-white text-decoration-none" href="order.html">Заявка</a>
+        </section>
+
+    </main>
+
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+        <div class="row g-4 justify-content-between">
+
+            <!-- О проекте -->
+            <div class="col-12 col-lg-5">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="image/logo.png" alt="Logo" width="40" height="40" style="margin-right: 8px;">
+                    <span class="h5 mb-0">InfoSecNews</span>
+                </div>
+                <p class="text-secondary small mb-0">
+                    Независимое издание об информационной безопасности: инциденты, уязвимости,
+                    практические гайды и мнения экспертов. Каждый материал проверяет редактор.
+                </p>
             </div>
+
+            <!-- Навигация -->
+            <div class="col-6 col-lg-3">
+                <h6 class="footer-title">Навигация</h6>
+                <ul class="footer-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Блог</a></li>
+                    <li><a href="team.html">Наши эксперты</a></li>
+                    <li>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Подписка</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Контакты -->
+            <div class="col-6 col-lg-4">
+                <h6 class="footer-title">Контакты</h6>
+                <ul class="footer-links">
+                    <li>+7(988)-443-5338</li>
+                    <li>Пн–Пт, 10:00–18:00 (МСК)</li>
+                    <li><a href="mailto:security@infosecnews.com">security@infosecnews.com</a></li>
+                    <li>Отвечаем в течение одного рабочего дня</li>
+                </ul>
+                <a class="btn btn-outline-primary btn-sm" href="contact.html">Сообщить об уязвимости</a>
             </div>
         </div>
-        </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/app.js"></script>
-    </body>
+        <hr class="footer-divider my-4">
+
+        <div class="row align-items-center g-2 small">
+            <div class="col-12 col-md-6 text-secondary">
+                &copy; 2026 InfoSecNews. Все права защищены.
+            </div>
+            <div class="col-12 col-md-6 text-md-end">
+                <a class="footer-bottom-link" href="privacy.html">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/effects.js"></script>
+        <script src="js/subscribe.js"></script>
+</body>
 </html>
