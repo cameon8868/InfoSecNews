@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Кража криптовалюты после фейкового собеседования">
+  <defs><linearGradient id="b" x2="1" y2="1"><stop stop-color="#09111f"/><stop offset="1" stop-color="#162a50"/></linearGradient></defs>
+  <rect width="960" height="540" fill="url(#b)"/>
+  <circle cx="730" cy="155" r="95" fill="#f2bb33" opacity=".9"/><circle cx="730" cy="155" r="58" fill="#09111f"/>
+  <path d="M730 92l34 63-34 63-34-63z" fill="#f2bb33"/>
+  <rect x="105" y="95" width="430" height="330" rx="24" fill="#101a2c" stroke="#4e91ff" stroke-width="4"/>
+  <rect x="145" y="135" width="350" height="250" rx="12" fill="#dce9ff"/>
+  <circle cx="320" cy="260" r="62" fill="#253654"/><circle cx="320" cy="238" r="28" fill="#b5c7e5"/>
+  <path d="M225 345c15-62 175-62 190 0" fill="#4e91ff"/>
+  <path d="M175 420l85-75 85 75" fill="none" stroke="#ff5c7a" stroke-width="16"/>
+  <path d="M260 345v75M430 420l-85-75" fill="none" stroke="#ff5c7a" stroke-width="16"/>
+  <text x="105" y="485" fill="#a9c4ed" font-family="Arial" font-size="28">FAKE INTERVIEW / COMPROMISE</text>
+</svg>

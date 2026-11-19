@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Компрометация цепочки поставок AI-библиотек">
+  <rect width="960" height="540" fill="#10151f"/>
+  <g fill="#26364d" stroke="#7d9ebd" stroke-width="4">
+    <rect x="80" y="220" width="150" height="100" rx="20"/><rect x="405" y="220" width="150" height="100" rx="20"/><rect x="730" y="220" width="150" height="100" rx="20"/>
+  </g>
+  <path d="M230 270h175M555 270h175" stroke="#69aef9" stroke-width="12" stroke-dasharray="20 12"/>
+  <circle cx="480" cy="270" r="52" fill="#69aef9"/><text x="480" y="287" text-anchor="middle" fill="#10151f" font-family="Arial" font-size="48" font-weight="700">AI</text>
+  <path d="M805 220l24 50-24 50-24-50z" fill="#ff4d72"/>
+  <text x="155" y="280" text-anchor="middle" fill="#dcecff" font-family="Arial" font-size="28">SOURCE</text>
+  <text x="805" y="280" text-anchor="middle" fill="#fff" font-family="Arial" font-size="28">APP</text>
+</svg>

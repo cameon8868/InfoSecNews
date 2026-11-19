@@ -19,6 +19,8 @@ window.ARTICLE_META = {
     "binance-hack": {
         tags: ["Инциденты", "Криптовалюты", "Социальная инженерия"],
         author: "anna",
+        cover: "image/covers/binance-hack.svg",
+        coverAlt: "Кража криптовалюты после фейкового собеседования",
         excerpt: "Северокорейская группировка TraderTraitor вывела $6,3 млрд за 20 минут — через фейковое собеседование.",
         links: [
             { title: "Заявление Binance (пример ссылки)", url: "https://www.binance.com/" },
@@ -34,30 +36,44 @@ window.ARTICLE_META = {
     },
     "php-rce": {
         tags: ["Уязвимости", "RCE", "CISA"],
-        author: "yan"
+        author: "yan",
+        cover: "image/covers/php-rce.svg",
+        coverAlt: "Критическая уязвимость PHP"
     },
     "mfa-checklist": {
         tags: ["Практика", "MFA", "Гайды"],
-        author: "ruslan"
+        author: "ruslan",
+        cover: "image/covers/mfa-checklist.svg",
+        coverAlt: "Многофакторная аутентификация"
     },
     "server-rce": {
         tags: ["Уязвимости", "RCE"],
-        author: "linus"
+        author: "linus",
+        cover: "image/covers/server-rce.svg",
+        coverAlt: "Атака RCE на сервер"
     },
     "phishing-trends": {
         tags: ["Фишинг", "Аналитика", "Социальная инженерия"],
-        author: "anna"
+        author: "anna",
+        cover: "image/covers/phishing-trends.svg",
+        coverAlt: "Фишинговое письмо сотруднику"
     },
     "ai-supply-chain": {
         tags: ["Supply Chain", "Open Source", "Инциденты"],
-        author: "yan"
+        author: "yan",
+        cover: "image/covers/ai-supply-chain.svg",
+        coverAlt: "Компрометация цепочки поставок AI-библиотек"
     },
     "quantum-crypto": {
         tags: ["Криптография", "NIST", "Аналитика"],
-        author: "linus"
+        author: "linus",
+        cover: "image/covers/quantum-crypto.svg",
+        coverAlt: "Постквантовое шифрование"
     },
     "zero-day-windows": {
         tags: ["Уязвимости", "Zero-Day", "Windows"],
-        author: "yan"
+        author: "yan",
+        cover: "image/covers/zero-day-windows.svg",
+        coverAlt: "Уязвимость нулевого дня в Windows"
     }
 };

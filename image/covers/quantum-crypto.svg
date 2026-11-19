@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Постквантовое шифрование">
+  <defs><radialGradient id="q"><stop stop-color="#213a78"/><stop offset="1" stop-color="#090f20"/></radialGradient></defs>
+  <rect width="960" height="540" fill="url(#q)"/>
+  <g fill="none" stroke="#58c5ff" stroke-width="4" opacity=".9">
+    <ellipse cx="480" cy="270" rx="300" ry="120" transform="rotate(25 480 270)"/>
+    <ellipse cx="480" cy="270" rx="300" ry="120" transform="rotate(-25 480 270)"/>
+    <ellipse cx="480" cy="270" rx="300" ry="120" transform="rotate(90 480 270)"/>
+  </g>
+  <circle cx="480" cy="270" r="74" fill="#bda2ff"/><circle cx="480" cy="270" r="25" fill="#090f20"/>
+  <g fill="#58c5ff"><circle cx="180" cy="270" r="10"/><circle cx="780" cy="270" r="10"/><circle cx="480" cy="150" r="10"/><circle cx="480" cy="390" r="10"/></g>
+  <text x="480" y="495" text-anchor="middle" fill="#c9d7ff" font-family="Arial" font-size="34" font-weight="700">POST-QUANTUM CRYPTO</text>
+</svg>

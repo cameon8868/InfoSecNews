@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Многофакторная аутентификация">
+  <rect width="960" height="540" fill="#091a22"/>
+  <rect x="70" y="70" width="820" height="400" rx="30" fill="#102d38" stroke="#39d5b5" stroke-width="4"/>
+  <rect x="130" y="125" width="320" height="290" rx="24" fill="#e8f8f4"/>
+  <circle cx="290" cy="230" r="62" fill="#39d5b5"/><path d="M260 230l22 22 42-50" fill="none" stroke="#091a22" stroke-width="16"/>
+  <rect x="190" y="325" width="200" height="20" rx="10" fill="#9bb9b3"/>
+  <rect x="525" y="125" width="300" height="290" rx="24" fill="#123846"/>
+  <circle cx="675" cy="220" r="58" fill="#39d5b5"/><circle cx="675" cy="220" r="25" fill="#091a22"/>
+  <path d="M675 178v84M633 220h84" stroke="#091a22" stroke-width="10"/>
+  <text x="675" y="330" text-anchor="middle" fill="#dcefeb" font-family="Arial" font-size="42" font-weight="700">MFA</text>
+</svg>

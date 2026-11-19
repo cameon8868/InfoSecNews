@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Уязвимость нулевого дня в Windows">
+  <rect width="960" height="540" fill="#071b29"/>
+  <g fill="#2ea9df">
+    <rect x="155" y="120" width="185" height="185"/><rect x="360" y="120" width="185" height="185"/>
+    <rect x="155" y="325" width="185" height="185"/><rect x="360" y="325" width="185" height="185"/>
+  </g>
+  <circle cx="705" cy="315" r="155" fill="#102f43" stroke="#6dccff" stroke-width="5"/>
+  <circle cx="705" cy="315" r="86" fill="none" stroke="#ff5a73" stroke-width="18" stroke-dasharray="28 14"/>
+  <path d="M705 220v95l65 38" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+  <text x="155" y="530" fill="#89cfee" font-family="Arial" font-size="29" font-weight="700">WINDOWS / ZERO-DAY / 2.5M USD</text>
+</svg>
