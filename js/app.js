@@ -123,46 +123,171 @@ function initCatalog() {
     const box = document.getElementById('catalog-container');
     if (!box) return;
 
+    const panel = document.getElementById('catalog-filters') || box.parentNode;
+    const controls = document.createElement('div');
+    controls.className = 'row g-2 align-items-end mb-3';
+    panel.prepend(controls);
+
     let filters = document.getElementById('tag-filters');
     if (!filters) {
         filters = document.createElement('div');
         filters.id = 'tag-filters';
-        box.parentNode.insertBefore(filters, box);
+        panel.appendChild(filters);
     }
-    filters.className = 'tag-filters d-flex flex-wrap gap-2 mb-4';
+    filters.className = 'tag-filters d-flex flex-wrap gap-2';
 
     const counts = {};
     ARTICLES.forEach((a) => a.tags.forEach((t) => (counts[t] = (counts[t] || 0) + 1)));
     const tags = Object.keys(counts).sort((x, y) => counts[y] - counts[x] || x.localeCompare(y, 'ru'));
+    const authors = [...new Set(ARTICLES.map((a) => a.author).filter(Boolean))];
+    let searchResultIds = null;
+    const authorName = (id) => {
+        const expert = typeof EXPERTS !== 'undefined' ? EXPERTS.find((e) => e.id === id) : null;
+        return expert ? expert.name : id;
+    };
 
-    let active = new URLSearchParams(location.search).get('tag') || '';
+    const monthIndex = {
+        января: 0, февраля: 1, марта: 2, апреля: 3, мая: 4, июня: 5,
+        июля: 6, августа: 7, сентября: 8, октября: 9, ноября: 10, декабря: 11
+    };
+    const parseArticleDate = (value) => {
+        const match = value.match(/^(\d{1,2})\s+([а-яё]+)\s+(\d{4})$/i);
+        if (!match) return null;
+        const month = monthIndex[match[2].toLowerCase()];
+        if (month === undefined) return null;
+        return new Date(+match[3], month, +match[1]);
+    };
+    const validDate = (value) => {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+        const [year, month, day] = value.split('-').map(Number);
+        const date = new Date(year, month - 1, day);
+        return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+    };
+    const params = new URLSearchParams(location.search);
+
+    let active = params.get('tag') || '';
     if (active && !counts[active]) active = '';
+    let author = params.get('author') || '';
+    if (author && !authors.includes(author)) author = '';
+    let from = params.get('from') || '';
+    let to = params.get('to') || '';
+    if (!validDate(from)) from = '';
+    if (!validDate(to)) to = '';
+    let sort = params.get('sort') === 'oldest' ? 'oldest' : 'newest';
+
+    controls.innerHTML = `
+        <div class="col-12">
+            <label class="form-label mb-1" for="catalog-author">Автор</label>
+            <select class="form-select form-select-sm" id="catalog-author">
+                <option value="">Все авторы</option>
+                ${authors.map((id) => `<option value="${escapeHtml(id)}">${escapeHtml(authorName(id))}</option>`).join('')}
+            </select>
+        </div>
+        <div class="col-6">
+            <label class="form-label mb-1" for="catalog-date-from">С даты</label>
+            <input class="form-control form-control-sm" type="date" id="catalog-date-from">
+        </div>
+        <div class="col-6">
+            <label class="form-label mb-1" for="catalog-date-to">По дату</label>
+            <input class="form-control form-control-sm" type="date" id="catalog-date-to">
+        </div>
+        <div class="col-12">
+            <label class="form-label mb-1" for="catalog-sort">Сортировка</label>
+            <select class="form-select form-select-sm" id="catalog-sort">
+                <option value="newest">Сначала новые</option>
+                <option value="oldest">Сначала старые</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-outline-secondary btn-sm w-100" id="catalog-reset">Сбросить фильтры</button>
+        </div>
+        <div class="col-12">
+            <small class="text-secondary" id="catalog-result-count" aria-live="polite"></small>
+        </div>`;
+
+    const authorSelect = controls.querySelector('#catalog-author');
+    const fromInput = controls.querySelector('#catalog-date-from');
+    const toInput = controls.querySelector('#catalog-date-to');
+    const sortSelect = controls.querySelector('#catalog-sort');
+    const resetButton = controls.querySelector('#catalog-reset');
+    const resultCount = controls.querySelector('#catalog-result-count');
+    authorSelect.value = author;
+    fromInput.value = from;
+    toInput.value = to;
+    sortSelect.value = sort;
 
     function draw() {
-        const shown = active ? ARTICLES.filter((a) => a.tags.includes(active)) : ARTICLES;
+        const startDate = from ? new Date(`${from}T00:00:00`) : null;
+        const endDate = to ? new Date(`${to}T23:59:59.999`) : null;
+        const candidates = ARTICLES.filter((a) => {
+            if (searchResultIds && !searchResultIds.has(a.id)) return false;
+            if (author && a.author !== author) return false;
+            const date = parseArticleDate(a.date);
+            if (startDate && (!date || date < startDate)) return false;
+            if (endDate && (!date || date > endDate)) return false;
+            return true;
+        });
+        const visibleCounts = {};
+        candidates.forEach((a) => a.tags.forEach((tag) => (visibleCounts[tag] = (visibleCounts[tag] || 0) + 1)));
+        const shown = candidates.filter((a) => !active || a.tags.includes(active)).sort((a, b) => {
+            const dateA = parseArticleDate(a.date);
+            const dateB = parseArticleDate(b.date);
+            if (!dateA || !dateB) return 0;
+            return sort === 'oldest' ? dateA - dateB : dateB - dateA;
+        });
 
         filters.innerHTML =
-            `<button type="button" class="tag-filter ${active ? '' : 'active'}" data-tag="">Все <span>${ARTICLES.length}</span></button>` +
+            `<button type="button" class="tag-filter ${active ? '' : 'active'}" data-tag="">Все <span>${candidates.length}</span></button>` +
             tags
                 .map(
                     (t) =>
-                        `<button type="button" class="tag-filter ${t === active ? 'active' : ''}" data-tag="${escapeHtml(t)}">#${escapeHtml(t)} <span>${counts[t]}</span></button>`
+                        `<button type="button" class="tag-filter ${t === active ? 'active' : ''}" data-tag="${escapeHtml(t)}">#${escapeHtml(t)} <span>${visibleCounts[t] || 0}</span></button>`
                 )
                 .join('');
 
         box.innerHTML = shown.length
             ? shown.map(createCardHTML).join('')
-            : '<p class="text-secondary">По этому тегу пока ничего нет.</p>';
+            : '<p class="text-secondary">По выбранным фильтрам ничего не найдено.</p>';
+        resultCount.textContent = `Показано ${shown.length} из ${ARTICLES.length} материалов`;
 
         const url = new URL(location.href);
         active ? url.searchParams.set('tag', active) : url.searchParams.delete('tag');
+        author ? url.searchParams.set('author', author) : url.searchParams.delete('author');
+        from ? url.searchParams.set('from', from) : url.searchParams.delete('from');
+        to ? url.searchParams.set('to', to) : url.searchParams.delete('to');
+        sort === 'oldest' ? url.searchParams.set('sort', sort) : url.searchParams.delete('sort');
         history.replaceState(null, '', url);
     }
+
+    document.addEventListener('article-search-results', (e) => {
+        searchResultIds = e.detail.ids ? new Set(e.detail.ids) : null;
+        draw();
+    });
 
     const setTag = (t) => {
         active = t === active ? '' : t; // повторный клик снимает фильтр
         draw();
     };
+
+    controls.addEventListener('change', (e) => {
+        if (e.target === authorSelect) author = authorSelect.value;
+        if (e.target === fromInput) from = fromInput.value;
+        if (e.target === toInput) to = toInput.value;
+        if (e.target === sortSelect) sort = sortSelect.value;
+        draw();
+    });
+    resetButton.addEventListener('click', () => {
+        active = '';
+        author = '';
+        from = '';
+        to = '';
+        sort = 'newest';
+        authorSelect.value = '';
+        fromInput.value = '';
+        toInput.value = '';
+        sortSelect.value = sort;
+        draw();
+    });
 
     filters.addEventListener('click', (e) => {
         const btn = e.target.closest('.tag-filter');

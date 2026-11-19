@@ -38,7 +38,7 @@ const EXPERTS = [
             { icon: "📰", text: "50+ опубликованных материалов" },
             { icon: "🎤", text: "Спикер на отраслевой конференции" }
         ],
-        links: [{ title: "Написать на почту", url: "mailto:security@infosecnews.com" }]
+        links: []
     },
     {
         id: "linus",

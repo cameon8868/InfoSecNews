@@ -226,8 +226,13 @@
 
         async function perform() {
             const query = input.value.trim();
-            if (query.length < 2) { box.classList.remove('active'); return; }
             const my = ++seq;
+            if (query.length < 2) {
+                box.classList.remove('active');
+                loader.style.display = 'none';
+                document.dispatchEvent(new CustomEvent('article-search-results', { detail: { ids: null } }));
+                return;
+            }
             loader.style.display = 'block';
             try {
                 if (mode !== 'tfidf') await ensureSbert();
@@ -240,6 +245,9 @@
             const results = await runSearch(query);
             if (my !== seq) return; // пришёл более свежий запрос
             loader.style.display = 'none';
+            document.dispatchEvent(new CustomEvent('article-search-results', {
+                detail: { ids: results.map((result) => ARTICLES[result.index].id) }
+            }));
 
             box.innerHTML = results.length
                 ? results.slice(0, 5).map((r) => {
