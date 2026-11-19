@@ -4,10 +4,21 @@
 
 > Контрольная работа №2. Тема: «CSS-фреймворки: разработка интерфейса на Bootstrap или альтернативном CSS-фреймворке».
 
+<p align="center">
+  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img alt="Bootstrap 5" src="https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+</p>
+<p align="center">
+  <img alt="Transformers.js" src="https://img.shields.io/badge/Transformers.js-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black">
+  <img alt="ONNX Runtime Web" src="https://img.shields.io/badge/ONNX_Runtime_Web-005CED?style=for-the-badge&logo=onnx&logoColor=white">
+</p>
+
 ## Возможности
 
 - Главная страница с подборкой материалов, информацией о проекте и FAQ.
-- Блог с карточками и отдельными страницами статей.
+- Блог с адаптивными карточками, локальными SVG-обложками и отдельными страницами статей.
 - Поиск по статьям в режимах **TF-IDF**, **SBERT** и **Гибрид**.
 - Выдвижная панель фильтров по тегам, автору и датам, сортировка по дате и сброс фильтров.
 - Карточки и страницы экспертов.
@@ -28,9 +39,13 @@
 | `Personal.html` | Обработка персональных данных |
 | `Privacy.html` | Политика конфиденциальности |
 
+## Обложки статей
+
+Локальные SVG-обложки для карточек блога и страниц материалов находятся в `image/covers/`. Пути к изображениям и их альтернативные описания задаются в `js/articles-meta.js`.
+
 ## Данные и поиск
 
-Тексты статей находятся в `js/Articles.js`. Теги, авторы, изображения и ссылки на источники хранятся отдельно в `js/articles-meta.js`; данные экспертов — в `js/experts-data.js`. Материалы загружаются из файлов проекта: новостная лента не подключена к RSS, API или внешним новостным сайтам.
+Тексты статей находятся в `js/Articles.js`. Теги, авторы, обложки и ссылки на источники хранятся отдельно в `js/articles-meta.js`; данные экспертов — в `js/experts-data.js`. Материалы загружаются из файлов проекта: новостная лента не подключена к RSS, API или внешним новостным сайтам.
 
 `js/search.js` добавляет к каталогу три режима поиска:
 
@@ -54,9 +69,11 @@ Bootstrap подключается с jsDelivr. Для загрузки моде
 
 ## Технологии
 
-- HTML5, CSS3 и JavaScript без сборщика;
-- Bootstrap 5.3.3;
-- Transformers.js и ONNX Runtime Web для SBERT-поиска.
+- **HTML5, CSS3 и JavaScript (ES6+)** — разметка, стили и логика сайта без сборщика;
+- **Bootstrap 5.3.3** — адаптивная сетка и UI-компоненты;
+- **Transformers.js** — загрузка и применение мультиязычной модели для SBERT-поиска;
+- **ONNX Runtime Web** — выполнение модели непосредственно в браузере;
+- **SVG** — масштабируемые локальные иллюстрации для материалов.
 
 ## Структура проекта
 
@@ -67,6 +84,7 @@ InfoSecNews/
 │   ├── effects.css
 │   └── extra.css
 ├── image/
+│   └── covers/         # SVG-обложки статей
 ├── js/
 │   ├── Articles.js
 │   ├── app.js
